@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>杨玲 2026 年度工作汇总 · ZERO Markets</title>
+  <style>
+    :root {
+      --bg: #0a0f14;
+      --bg-elev: #10171f;
+      --card: #141d26;
+      --card-2: #1a2530;
+      --border: #23323f;
+      --border-soft: #1a2732;
+      --green: #00d47a;
+      --green-light: #4ade94;
+      --green-pale: #b6f3ce;
+      --text: #eef4f8;
+      --text-muted: #8ba0b0;
+      --text-faint: #5a6e7d;
+      --amber: #e0b15a;
+      --coral: #e5897a;
+      --blue: #5b8fff;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --maxw: 1180px;
+      --nav-h: 56px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+      padding-top: var(--nav-h);
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* 纹理背景 */
+    .texture {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(135deg, transparent 48%, rgba(0, 212, 122, 0.03) 49%, rgba(0, 212, 122, 0.03) 50%, transparent 51%),
+        linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.01) 49%, rgba(255, 255, 255, 0.01) 50%, transparent 51%);
+      background-size: 140px 140px, 90px 90px;
+      opacity: 0.5;
+    }
+
+    /* 顶部导航 */
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(10, 15, 20, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .topnav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 14.5px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .brand-name span {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links a {
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 7px 13px;
+      border-radius: 8px;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--card);
+    }
+
+    .nav-links a.active {
+      color: var(--green-light);
+      background: rgba(0, 212, 122, 0.1);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 64px 0 40px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    h1 .accent {
+      background: linear-gradient(90deg, var(--green-light), var(--green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+    }
+
+    .pill b {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* 章节 */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 48px 0;
+      border-top: 1px solid var(--border-soft);
+      scroll-margin-top: calc(var(--nav-h) + 16px);
+    }
+
+    .section:first-of-type { border-top: none; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .section-head .bar {
+      width: 4px;
+      height: 22px;
+      background: var(--green);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .section-head h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .subsection-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 32px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subsection-title::before {
+      content: '';
+      width: 3px;
+      height: 16px;
+      background: var(--green-light);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    /* 卡片 */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+
+    .card-accent {
+      border-left: 4px solid var(--green);
+    }
+
+    .card-amber {
+      border-left: 4px solid var(--amber);
+    }
+
+    /* 表格 */
+    .table-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 16px 0 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--card-2);
+      text-align: left;
+      padding: 13px 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+    td strong { color: var(--text); font-weight: 600; }
+
+    /* 列表 */
+    ul {
+      padding-left: 0;
+      list-style: none;
+      margin: 12px 0;
+    }
+
+    ul li {
+      position: relative;
+      padding: 6px 0 6px 22px;
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: 0.7;
+    }
+
+    ul li strong { color: var(--text); font-weight: 600; }
+
+    /* 高亮块 */
+    .highlight-box {
+      background: rgba(0, 212, 122, 0.05);
+      border: 1px solid rgba(0, 212, 122, 0.15);
+      border-left: 4px solid var(--green);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      margin: 20px 0;
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    .highlight-box strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .highlight-box.amber {
+      background: rgba(224, 177, 90, 0.05);
+      border-color: rgba(224, 177, 90, 0.15);
+      border-left-color: var(--amber);
+    }
+
+    /* 统计数字 */
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+
+    .stat-item {
+      flex: 1 1 140px;
+    }
+
+    .stat-item .num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--green-light);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-item .lbl {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 4px;
+    }
+
+    /* 对比卡片 */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .compare-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+    }
+
+    .compare-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .compare-card.ic h3 { color: var(--blue); }
+    .compare-card.zero h3 { color: var(--amber); }
+
+    .compare-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 14px;
+      gap: 12px;
+    }
+
+    .compare-row:last-child { border-bottom: none; }
+
+    .compare-row .key {
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .compare-row .val {
+      color: var(--text);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* 页脚 */
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 40px 0 60px;
+      text-align: center;
+      border-top: 1px solid var(--border-soft);
+      margin-top: 40px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-faint);
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .wrap { padding: 0 20px; }
+      .topnav-inner { padding: 0 20px; }
+      .brand-name span { display: none; }
+      .nav-links a { font-size: 12px; padding: 6px 10px; }
+      h1 { font-size: 28px; }
+      .section-head h2 { font-size: 18px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .stat-row { flex-direction: column; gap: 12px; }
+      table { font-size: 12.5px; }
+      th, td { padding: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="texture"></div>
+
+<!-- 顶部导航 -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">
+      <svg class="logo-mark" viewBox="0 0 100 100" fill="none">
+        <rect x="4" y="4" width="92" height="92" rx="18" fill="#0F1820"/>
+        <path d="M28 32H72L36 68H72" stroke="#EEF4F8" stroke-width="9" stroke-linecap="square" fill="none"/>
+        <path d="M66 32L30 68" stroke="#00D47A" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-name">杨玲 <span>· 2026 年度工作汇总</span></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#overview" data-target="overview">概览</a>
+      <a href="#email" data-target="email">邮件</a>
+      <a href="#website" data-target="website">网站</a>
+      <a href="#social" data-target="social">社媒</a>
+      <a href="#geo" data-target="geo">GEO / SEO</a>
+      <a href="#nise" data-target="nise">NISE ASO</a>
+      <a href="#process" data-target="process">流程建设</a>
+      <a href="#difference" data-target="difference">对比</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>年度工作汇总 · 2026.01 – 2026.09</div>
+    <h1>杨玲 <span class="accent">2026 年度工作汇总</span></h1>
+    <p class="hero-sub">邮件 · 网站 · 社媒 · GEO / SEO · 流程建设</p>
+    <div class="hero-meta">
+      <span class="pill">岗位：<b>内容运营 / 邮件运营 / 社媒运营</b></span>
+      <span class="pill">周期：<b>2026.01 – 2026.09</b></span>
+      <span class="pill">覆盖市场：<b>SVG / FMA / FSC / ASIC / HH / NZ / AU / KO / VN</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- 一、我今年在做什么 -->
+<div class="section" id="overview">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>一、我今年在做什么</h2>
+    </div>
+    <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">邮件、网站、社媒。</p>
+    <div class="card card-accent">
+      <ul>
+        <li><strong>邮件</strong>——客户收到的通知，产品上线、系统维护、功能性通知上线，协助协调各部门邮件需求</li>
+        <li><strong>网站</strong>——官网上的产品信息、交易时间、合规内容，更新和审核</li>
+        <li><strong>社媒</strong>——YouTube、Instagram、TikTok、LinkedIn 的内容发布和投放</li>
+      </ul>
+    </div>
+    <p style="color: var(--text-muted); font-size: 15px;">今年还多了一块 <strong style="color: var(--green-light);">GEO</strong>，就是让品牌在 AI 搜索里能被找到、被推荐。</p>
+  </div>
+</div>
+
+<!-- 二、邮件 -->
+<div class="section" id="email">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>二、邮件</h2>
+    </div>
+
+    <div class="subsection-title">2.1 常规邮件</div>
+    <p style="color: var(--text-muted); font-size: 14.5px;">Non-farm、WTI Pre/Rollover、Holiday Trading Hours、美国/英国/澳洲夏令时、系统维护、KO Indices Rollover、King's Birthday、ANZAC Day、Matariki、Waitangi Day、Good Friday &amp; Easter、Labour Day。</p>
+    <p style="color: var(--text-muted); font-size: 14.5px; margin-top: 8px;">全年多市场、多语言，按节点发布。</p>
+
+    <div class="subsection-title">2.2 系统邮件</div>
+    <div class="card">
+      <p style="color: var(--text-muted); font-size: 14.5px;">系统邮件是客户在平台上每一个关键动作收到的通知。EV 提交、审核通过/拒绝、入金、出金、账户变更——这些场景全靠系统邮件触达客户。</p>
+      <p style="color: var(--text-muted); font-size: 14.5px; margin-top: 10px;">系统邮件如果出问题，后果是直接的：客户收不到通知，就不知道下一步该做什么，客户体感下降，客户问询量增加。</p>
+    </div>
+
+    <p style="color: var(--text); font-weight: 600; font-size: 15px; margin: 28px 0 12px;">今年系统邮件主要解决的三类问题</p>
+
+    <div class="card card-accent">
+      <h4 style="color: var(--green-light); font-size: 15px; margin-bottom: 10px;">第一类：新市场上线，邮件体系从零搭建</h4>
+      <p style="color: var(--text-muted); font-size: 14.5px;">新市场上线，客户对平台一无所知。从注册、验证、入金到交易，每一个环节都需要系统邮件引导。这套邮件覆盖客户全生命周期的每一个关键动作，触发场景、变量字段、多语言版本、跳转链接，每一个都要逐封测试确认。</p>
+      <p style="color: var(--text); font-weight: 600; font-size: 14px; margin: 16px 0 8px;">今年完成的新市场邮件体系搭建：</p>
+      <ul>
+        <li><strong>NISE 股票业务</strong>：邮件体系从零搭建，覆盖多个系统通知场景，合规审核、配置、测试、上线全流程，邮件视觉系统从零设计</li>
+        <li><strong>越南市场</strong>：全量邮件从零制作、配置、测试、上线，完成交接文档，包含英语和越南语两种语言</li>
+        <li><strong>AU CFD</strong>：全量邮件从零制作、配置、测试、上线，完成交接文档，包含英语和中文两种语言；前后经历过三次署名、Logo、Footer、法律文件、下载链接、地址全量更新</li>
+      </ul>
+      <p style="color: var(--text-muted); font-size: 14px; margin-top: 12px;">这类工作的价值是：新市场上线，客户能不能自主顺畅走完注册到交易的全流程。少了哪一封，客户可能就会卡在哪一步。</p>
+    </div>
+
+    <div class="card card-amber">
+      <h4 style="color: var(--amber); font-size: 15px; margin-bottom: 10px;">第二类：已有邮件体系批量修改</h4>
+      <p style="color: var(--text-muted); font-size: 14.5px;">SE-BR 市场此前已上线，但今年因为监管要求和品牌调整，需要对存量系统邮件做全量修改。</p>
+      <ul>
+        <li>88 封系统邮件的 Footer 和格式全量更换</li>
+        <li>前后改了 5 次，每一次都是人工逐封手动修改</li>
+      </ul>
+      <p style="color: var(--text-muted); font-size: 14px; margin-top: 12px;">这类工作的价值是：88 封邮件 × 5 轮修改 = 440 次人工手动操作。无法借助自动化工具批量处理，如果漏改一封、改错一封，客户就可能收不到邮件或内容错误，直接影响品牌和监管。</p>
+    </div>
+
+    <div class="card">
+      <h4 style="color: var(--text); font-size: 15px; margin-bottom: 10px;">第三类：产品调整、系统迁移、合规要求的专项通知</h4>
+      <p style="color: var(--text-muted); font-size: 14.5px;">产品要下架、服务器要迁移、监管有新要求——这些都需要专项邮件通知客户。</p>
+      <ul>
+        <li><strong>巴西 15K</strong>：入金限制系列邮件</li>
+        <li><strong>新西兰</strong>：客户评估验证系列邮件（每年都需要）</li>
+        <li><strong>韩国指数下架</strong>：覆盖多语言</li>
+        <li><strong>HH MT5 迁移通知</strong></li>
+        <li><strong>TradingView 接入</strong></li>
+        <li><strong>Alpaca</strong>：交易确认/对账单修改，一次性通知（含 BCC 功能）</li>
+        <li><strong>其他系统通知</strong>：EV 重新提交、PSP 回调失败、OA 审批待办、Demo 账号过期等</li>
+      </ul>
+      <p style="color: var(--text-muted); font-size: 14px; margin-top: 12px;">这类工作的价值是：时效性强，合规要求高。</p>
+    </div>
+
+    <p style="color: var(--text); font-weight: 600; font-size: 15px; margin: 28px 0 12px;">系统邮件工作的核心价值</p>
+    <div class="card">
+      <ul>
+        <li><strong>客户全生命周期的触达保障</strong>——从注册、验证、入金、交易到出金，每一个环节都有系统邮件在触达客户。这套体系是客户能顺利使用平台的基础。</li>
+        <li><strong>合规要求的执行保障</strong>——金融行业的系统邮件有严格的合规要求。每一封邮件的内容、免责声明、法律文件链接，都必须符合监管规定。缺一封、错一封，就是合规风险。</li>
+        <li><strong>新市场上线的速度保障</strong>——新市场上线，邮件体系必须在产品上线前完成。越南市场、NISE 股票业务，都是时间紧、任务重，要在有限时间内完成从零到一的搭建。</li>
+        <li><strong>批量修改的准确性保障</strong>——SE-BR 88 封邮件改了 5 次，每次都是人工逐封修改。这种工作没有捷径，只能一封一封来。要保证每一封都改对、都测试通过，靠的是细致和耐心。</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">2.3 营销邮件</div>
+    <p style="color: var(--text-muted); font-size: 14.5px;">WTC Q2/Q3 系列按时间线稳定发布，Promo、Engagement、Bounce、Bonus、Final 都有。Lucky Draw 在 KO/MN 市场发布。SpaceX 上线邮件加视频脚本。</p>
+
+    <div class="subsection-title">2.4 邮件模板和流程</div>
+    <ul>
+      <li>推进 HTML 模板库建设，完成 SVG、FMA、FSC-SE 多区域模板添加</li>
+      <li>启动全监管全语言旧模板邮件清单整理</li>
+      <li>CFD 旧模板更新流程标准化</li>
+      <li>搭建邮件发布审核 SOP、新市场邮件接入 SOP、Marketing Portal 预算申请 SOP</li>
+      <li>推动 HubSpot「按客户时区发送」功能验证和启用</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 三、网站 -->
+<div class="section" id="website">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>三、网站</h2>
+    </div>
+    <ul>
+      <li>新西兰官网加密货币产品信息更新和上线测试</li>
+      <li>AU CFD 官网内容适配和合规审核</li>
+      <li>网站语言统一化方案 V1–V3</li>
+      <li>Meta Description 优化：Blog、Funding、Fund Account、Withdraw、Why ZERO Markets 等页面</li>
+      <li>产品上下架：CVAC 移除、WTI Rollover 时间修改、出入金方式增加、杠杆调整、加密货币交易时间更新</li>
+      <li>越南网站「Forex」敏感词全站替换和删除</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 四、社媒 -->
+<div class="section" id="social">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>四、社媒</h2>
+    </div>
+
+    <div class="subsection-title">4.1 YouTube 投放</div>
+
+    <div class="highlight-box">
+      <strong>接手时的样子：</strong> 频道从 2022 年 7 月到 2026 年 6 月，4 年积累了 <strong>237 个订阅者</strong>。月均播放 440 次，日均大概 15 次。算法几乎不推荐，自然流量接近零。
+    </div>
+
+    <p style="color: var(--text); font-weight: 600; font-size: 14.5px; margin: 16px 0 8px;">7 月开始做付费投放：</p>
+    <ul>
+      <li>首月预算 500 美元，锁定英语核心市场</li>
+      <li>整理 YouTube 投放合规清单</li>
+      <li>每周追踪 CPV、CTR、订阅转化率、每订阅成本</li>
+      <li>7 月测试 3 条，8 月两轮 8 条，9 月转向印度市场加测试澳洲网站转化</li>
+    </ul>
+
+    <div class="stat-row">
+      <div class="stat-item"><div class="num">16 条</div><div class="lbl">累计投放视频</div></div>
+      <div class="stat-item"><div class="num">约 1,200 美元</div><div class="lbl">总花费</div></div>
+      <div class="stat-item"><div class="num">33,000+</div><div class="lbl">总新增订阅</div></div>
+      <div class="stat-item"><div class="num">0.02–0.03 美元</div><div class="lbl">平均每订阅成本</div></div>
+      <div class="stat-item"><div class="num">99%+</div><div class="lbl">预算执行率</div></div>
+    </div>
+
+    <div class="card">
+      <p style="color: var(--text-muted); font-size: 14.5px;"><strong style="color: var(--text);">7 月：</strong>投放 5 条，花费 599.71 美元，新增订阅 17,189 人。发现 Understanding 类型触达效率最优，Pain 类型转化效率最高。教训是被拒登的广告不会自动停止，必须手动暂停——Spread 视频被拒后自动恢复投放，多花了 188.91 美元。</p>
+      <p style="color: var(--text-muted); font-size: 14.5px; margin-top: 10px;"><strong style="color: var(--text);">8 月：</strong>投放 8 条，花费 497.44 美元（预算 500，执行率 99.5%），新增订阅 21,697 人。Understanding 最稳定，Education 首次通过审核，Authority 类型 0/2 通过率暂停排期。</p>
+      <p style="color: var(--text-muted); font-size: 14.5px; margin-top: 10px;"><strong style="color: var(--text);">9 月：</strong>印度订阅增长 0.0251 美元/订阅；澳洲网站转化测试 4 条全部被拒（Cryptocurrencies 政策）。发现换目标会导致已通过内容再次被拒。</p>
+    </div>
+
+    <div class="highlight-box amber">
+      <strong>投放前 vs 投放后：</strong> 4 年积累 237 个订阅，投放 3 个月新增 33,000+。约等于过去 4 年总和的 139 倍。
+    </div>
+
+    <div class="subsection-title">4.2 Instagram / TikTok / LinkedIn</div>
+    <ul>
+      <li>保持 IG/FB Reels、TikTok、LinkedIn 常态化发布</li>
+      <li>社媒文案统一加合规用语</li>
+      <li>推进 TikTok 商业账户认证确认</li>
+    </ul>
+
+    <div class="subsection-title">4.3 社媒运营 SOP</div>
+    <p style="color: var(--text-muted); font-size: 14.5px;">从源头开始接手社媒视频运营，从脚本创作开始。由于中途接手，对整理流程有很多不清晰的地方，且为了进一步合规安全，从脚本处就提倡审核，并推进完整社媒视频运营 SOP 架构搭建。</p>
+    <p style="color: var(--text); font-weight: 600; font-size: 14px; margin: 16px 0 8px;">我做了这些：</p>
+    <ul>
+      <li>把社媒视频从脚本到发布拆成 7 个步骤，每一步明确负责人、状态、文件存放位置</li>
+      <li>明确竖屏和横屏的 Risk Warning 规则：竖屏是封面文字+发布文案，横屏是画面下方固定条+发布文案</li>
+      <li>新增合规自查清单：第一次合规前 11 项，第二次合规前 8 项</li>
+      <li>新增异常处理表：覆盖 6 类异常，原则是「宁可顺延，不跳过审核」</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 五、GEO / SEO -->
+<div class="section" id="geo">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>五、GEO / SEO</h2>
+    </div>
+
+    <div class="subsection-title">5.1 IC Markets 竞品调研（4月）</div>
+    <p style="color: var(--text-muted); font-size: 14.5px;">公司需要了解 Global 市场的主要竞争对手在做什么。IC Markets 是澳洲市场最具代表性的多资产交易平台之一，成立时间比 ZERO 早（2007 vs 2017），流量规模远超 ZERO。</p>
+
+    <div class="compare-grid">
+      <div class="compare-card ic">
+        <h3>IC Markets</h3>
+        <div class="compare-row"><span class="key">月访问量</span><span class="val">338 万</span></div>
+        <div class="compare-row"><span class="key">全球排名</span><span class="val">#17,847</span></div>
+        <div class="compare-row"><span class="key">平均访问时长</span><span class="val">14:04</span></div>
+        <div class="compare-row"><span class="key">每次访问页数</span><span class="val">6.55</span></div>
+        <div class="compare-row"><span class="key">YouTube 订阅</span><span class="val">23,800</span></div>
+        <div class="compare-row"><span class="key">Facebook 粉丝</span><span class="val">402,441</span></div>
+      </div>
+      <div class="compare-card zero">
+        <h3>ZERO Markets</h3>
+        <div class="compare-row"><span class="key">月访问量</span><span class="val">10.7 万</span></div>
+        <div class="compare-row"><span class="key">全球排名</span><span class="val">#189,785</span></div>
+        <div class="compare-row"><span class="key">平均访问时长</span><span class="val">2:13</span></div>
+        <div class="compare-row"><span class="key">每次访问页数</span><span class="val">3.95</span></div>
+        <div class="compare-row"><span class="key">YouTube 订阅</span><span class="val">214</span></div>
+        <div class="compare-row"><span class="key">Facebook 粉丝</span><span class="val">247</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p style="color: var(--text-muted); font-size: 14.5px;"><strong style="color: var(--text);">核心发现：</strong>IC Markets 的爆款不是交易教程，而是宏观商业话题加品牌联动。他们每月从 AI 搜索获得约 4,600 次引流（ChatGPT 3,000 / Perplexity 648 / Gemini 1,000），ZERO 基本不可见。这个发现也直接推动了我们部门后来做 GEO 优化方案。</p>
+    </div>
+
+    <div class="subsection-title">5.2 GEO 内容库搭建（5月–6月）</div>
+    <p style="color: var(--text-muted); font-size: 14.5px;">AI 搜索正在吃掉流量。用户在 ChatGPT、Perplexity 里问「澳洲哪个外汇平台靠谱」，AI 引擎会自动检索内容、提取段落、整合回答并注明来源。如果品牌内容不在 AI 的引用来源里，就等于在这个新入口上查无此人。</p>
+
+    <p style="color: var(--text); font-weight: 600; font-size: 14px; margin: 16px 0 8px;">我做了这些：</p>
+    <ul>
+      <li>系统学习 GEO 的运作机制，明确「内容先给 AI 读，再通过 AI 传递给用户」</li>
+      <li>研究金融行业 LLM 优先引用的内容结构：独立术语定义、FAQ 结构、段落自包含、可验证事实</li>
+      <li>产出《GEO 内容库搭建计划》：16 周执行方案，四阶段推进</li>
+      <li>推进三家 GEO AI 跟踪工具调研：Otterly.ai、TryProfound、Peec.ai</li>
+      <li>输出 6 月 GEO 问题库：39 个结构化问题</li>
+      <li>推进品牌负面/不实信息删除：NYC 服务器已删除、BrokerChooser 已删除、WikiFX 沟通中</li>
+    </ul>
+
+    <div class="highlight-box">
+      <strong>当前状态：</strong> 方案已完成，但因更换工具下一步指示没有明确，暂停执行。
+    </div>
+  </div>
+</div>
+
+<!-- 六、NISE APP 商店上线 -->
+<div class="section" id="nise">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>六、NISE APP 商店上线（ASO）（5月–6月）</h2>
+    </div>
+    <p style="color: var(--text-muted); font-size: 14.5px;">NISE 是另一个的股票业务品牌，计划在澳洲市场上线独立 App。上线前需要完成 App Store / Google Play 的商店页面搭建，包括关键词、标题、副标题、描述、截图文案。这块之前没有专人负责。</p>
+
+    <p style="color: var(--text); font-weight: 600; font-size: 14px; margin: 16px 0 8px;">我做了这些：</p>
+    <ul>
+      <li>竞品调研：澳洲市场上主流券商 App 的商店展示方式</li>
+      <li>关键词部署：筛选 5 个优先关键词（interactive brokers、paper trading、stock trading、cmc invest、trading 212）</li>
+      <li>App 标题和副标题：产出 5 套方案</li>
+      <li>App 完整描述：产出 3 套方案</li>
+      <li>截图优势文案：产出 3 套方案，每套 6 条标题加描述</li>
+    </ul>
+
+    <div class="highlight-box">
+      <strong>成果：</strong> 完成 NISE APP 商店页面全套 ASO 内容，所有文案符合 ASIC 监管要求。
+    </div>
+  </div>
+</div>
+
+<!-- 七、流程和制度建设 -->
+<div class="section" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>七、流程和制度建设</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>项目</th><th>成果</th></tr></thead>
+        <tbody>
+          <tr><td><strong>邮件发布审核 SOP</strong></td><td>完成 Email Deployment Review - SOP</td></tr>
+          <tr><td><strong>新市场邮件接入 SOP</strong></td><td>以越南为首个落地场景</td></tr>
+          <tr><td><strong>Marketing Portal 预算 SOP</strong></td><td>涵盖活动创建、预算创建、审批流程</td></tr>
+          <tr><td><strong>社媒视频运营 SOP</strong></td><td>明确选题、脚本、录制、剪辑、审核、发布全链路</td></tr>
+          <tr><td><strong>全监管邮件汇总</strong></td><td>完成全监管全语言邮件审查</td></tr>
+          <tr><td><strong>需求工单流程</strong></td><td>完成内容部门需求工单全链路闭环设计</td></tr>
+          <tr><td><strong>语言统一化方案</strong></td><td>产出 V1–V3</td></tr>
+          <tr><td><strong>GEO 内容库搭建计划</strong></td><td>16 周执行方案</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 八、我做的事和普通执行的区别 -->
+<div class="section" id="difference">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="bar"></div>
+      <h2>八、我做的事和普通执行的区别</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>维度</th><th>普通执行</th><th>我</th></tr></thead>
+        <tbody>
+          <tr><td><strong>邮件</strong></td><td>发出去就行</td><td>建模板库、SOP、汇总表，让所有人发得对</td></tr>
+          <tr><td><strong>新市场邮件</strong></td><td>按需求配几封</td><td>从零统筹，规划场景、配置模板、对接变量、测试上线、跟进反馈</td></tr>
+          <tr><td><strong>网站</strong></td><td>按需求更新</td><td>推动语言统一化、GEO 优化、合规适配</td></tr>
+          <tr><td><strong>社媒</strong></td><td>按时发布</td><td>跑投放模型、建内容库、做数据分析、建 SOP</td></tr>
+          <tr><td><strong>项目</strong></td><td>被动接需求</td><td>主动识别风险、推动跨部门闭环</td></tr>
+          <tr><td><strong>流程</strong></td><td>按现有流程做</td><td>发现问题、提出方案、推动落地、沉淀 SOP</td></tr>
+          <tr><td><strong>调研</strong></td><td>看表面数据</td><td>拆解流量、内容、SEO、GEO、广告全维度</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+  <div class="wrap">
+    <p>杨玲 · 2026 年度工作汇总 · 2026 年 9 月</p>
+  </div>
+</div>
+
+<script>
+  // 平滑滚动 + 导航高亮
+  (function() {
+    var navLinks = document.querySelectorAll('.nav-links a');
+    var sections = [];
+
+    navLinks.forEach(function(link) {
+      var targetId = link.getAttribute('data-target');
+      var section = document.getElementById(targetId);
+      if (section) {
+        sections.push({ el: section, link: link, id: targetId });
+      }
+
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById(targetId);
+        if (target) {
+          var offset = 56 + 16; // nav height + margin
+          var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // 滚动时高亮当前板块
+    function updateActive() {
+      var scrollPos = window.pageYOffset + 56 + 40; // nav + buffer
+      var current = null;
+
+      sections.forEach(function(s) {
+        if (s.el.offsetTop <= scrollPos) {
+          current = s.id;
+        }
+      });
+
+      // 如果滚到最底部，高亮最后一个
+      if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 10) {
+        current = sections[sections.length - 1].id;
+      }
+
+      navLinks.forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('data-target') === current);
+      });
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          updateActive();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    updateActive();
+  })();
+</script>
+
+</body>
+</html>
